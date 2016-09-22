@@ -11,6 +11,8 @@ You will need to configure this integration to store credentials to artifactory.
  5. Enter your HTTP Endpoint(url), API key, username. You can follow instructions in [JFrogCLI-Authentication](https://www.jfrog.com/confluence/display/RTF/JFrog+CLI#JFrogCLI-Authentication)
  6. Click on `Save`
 
+![JFrog_Integration](https://github.com/deepikasl/JFrog_Artifactory/blob/master/images/jfrog-int.png)
+
 ## CI
 
 The integration will now be available to all your continuous integration.
