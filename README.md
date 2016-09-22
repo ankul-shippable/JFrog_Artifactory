@@ -47,25 +47,62 @@ integrations:
  
  In the following example, It is done in `pre_ci` section of `shippable.yml`.
  
- Upload a file called `sample_file.tgz` to the root of the `sample_project` repository of JFrog Artifactory:
+ Upload a file called `sample_file.tgz` to the root of the `test-repository-local` repository of JFrog Artifactory:
  
  ```javascript
  build:
   pre_ci:
-    - jfrog rt u sample_file.tgz sample_project
+    - jfrog rt u sample_file.tgz test-repository-local
  ```
- 
 ### Download a file from your Artifactory
  
  Configure your `shippable.yml` to associate the JFrog integration for your project as part of CI.
  
- Download an artifact called `sample_file.zip` located at the root of the `sample_project` repository to the current directory.
-
+ Download an artifact called `sample_file.zip` located at the root of the `test-repository-local` repository to the current directory.
+ 
  ```javascript
  build:
   pre_ci:
     - jfrog rt dl sample_project/sample_file.zip
  ```
+ 
+ - If your build image, has JFrog installed then you can run this in any section of `build` of `shippable.yml`, we will configure your Jfrog-CLI. For Example:
+ 
+ ```javascript
+ language: none
+
+ build:
+   pre_ci:
+     - echo "true4"
+ 
+   pre_ci_boot:
+     image_name: ankul/u12
+     image_tag: local.4
+     pull: false
+     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+ 
+   ci:
+     - sleep 3
+     - ls -al
+     - jfrog rt u sample_file.tgz test-repository-local
+     - jfrog rt dl test-repository-local/codeblocks.tar.xz
+     - ls -al
+ 
+   post_ci:
+     - echo "true"
+ 
+ deploy:
+   pre_build:
+     - ls
+
+ integrations:
+   hub:
+     - integrationName: jfrog-integration
+       type: artifactory
+     - integrationName: docker-integration
+       type: docker
+ ```
+
 Here is [JFrog CLI User guide](https://www.jfrog.com/confluence/display/RTF/JFrog+CLI) for reference.
  
 
