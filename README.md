@@ -18,7 +18,7 @@ You will need to configure this integration to store credentials to artifactory.
 The integration will now be available to all your continuous integration.
 
 ### Add the JFrog Artifactory integration to your subscription.
-To add ECR integration to your subscription, do the following:
+To add JFrog Artifactory integration to your subscription, do the following:
 
 1. Select your Subscription from the dropdown burger bar menu on the top left.
 2. Click the 'Settings' tab and go to the 'Integrations' section.
@@ -28,9 +28,13 @@ To add ECR integration to your subscription, do the following:
 6. Click the `Save` button.
 7. The JFrog Artifactory integration will show up in the list of integrations for your subscription.
 
+![JFrog_SubInt](https://github.com/deepikasl/JFrog_Artifactory/blob/master/images/subjfrogint.png)
+
+![List_SubInts](https://github.com/deepikasl/JFrog_Artifactory/blob/master/images/Screenshot%20from%202016-09-22%2021:27:26.png)
+
 Here's an example , for reference to configure JFrog Artifactory integration in `shippable.yml`.
 
-```
+```javascript
 integrations:
   hub:
     - integrationName: jfrog-integration
@@ -45,7 +49,7 @@ integrations:
  
  Upload a file called `sample_file.tgz` to the root of the `sample_project` repository of JFrog Artifactory:
  
- ```
+ ```javascript
  build:
   pre_ci:
     - jfrog rt u sample_file.tgz sample_project
@@ -57,7 +61,7 @@ integrations:
  
  Download an artifact called `sample_file.zip` located at the root of the `sample_project` repository to the current directory.
 
- ```
+ ```javascript
  build:
   pre_ci:
     - jfrog rt dl sample_project/sample_file.zip
