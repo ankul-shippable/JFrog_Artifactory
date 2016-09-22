@@ -66,7 +66,8 @@ integrations:
     - jfrog rt dl sample_project/sample_file.zip
  ```
  
- - If your build image, has JFrog installed then you can run this in any section of `build` of `shippable.yml`, we will configure your Jfrog-CLI. For Example:
+ 
+  If your build image, has JFrog installed then you can run this in any section of `build` of `shippable.yml`, we will configure your Jfrog-CLI. For Example:
  
  ```javascript
  language: none
